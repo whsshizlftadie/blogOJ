@@ -1,5 +1,6 @@
 # 简介
 开发工具：IDEA 框架：springboot+JPA thymeleaf
+数据库mysql8
 
 oj模块数据库说明
 testcode是包含测试程序
