@@ -1,4 +1,4 @@
-# 工程简介
+# 简介
 开发工具：IDEA 框架：springboot+JPA thymeleaf
 
 oj模块数据库说明
