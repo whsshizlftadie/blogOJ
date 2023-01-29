@@ -6,28 +6,16 @@ import java.io.InputStream;
 
 // 为了能执行javac编译命令，和java运行指令。
 public class CommandUtil {
-    // run 方法，要执行一个命令就要创建一个进程来运行一个命令。
-    // 要进行编译和运行，来确定这个类中的参数，包含3个参数。
-    // 1.要进行编译的命令
-    // 2.要是编译和运行都成功，则是标准输出的内容，放在一个文件中，用stdoutFile来表示。
-    // 3.要是编译出错或者运行出错，则表示的是标准错误，放在stderrFile文件中。
-    // Run方法用于进行创建进程并执行编译和运行命令。
-    // cmd 表示要执行的命令, 比如 javac
-    // stdoutFile 指定标准输出写到哪个文件中
-    // stderrFile 执行标准错误写到哪个文件中
-    // 进程的返回值用0来表示进程结束，-1表示的是进程没有结束，或者进程异常。
     private static final int CMD_TIME_OUT=2;
     private static final int DEFAULT_INTERVAL=100;
     public static int run(String cmd, String stdoutFile,
                           String stderrFile) throws IOException, InterruptedException {
-        // 进行多进程操作。
-        // 用 Runtime 这样的类表示进程的创建。Runtime这个类在创建的时候，不用手动去创建。
-        // 里边的实例只有一个，这就是设计模式中的“单例模式”，直接调用里边的.getRunTime().exec()方法即可。
-        // 下边表示创建一个进程，用process表示。
+
         Process process = Runtime.getRuntime().exec(cmd);
         long startTime = System.currentTimeMillis();
         boolean processFinished = false;
         int exitVal;
+        //下面处理运行超时
         while(!processFinished){
             if(System.currentTimeMillis()-startTime>=2000){
                 process.destroyForcibly();

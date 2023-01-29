@@ -64,7 +64,7 @@ public class Task {
         // 只关心 javac 的标准错误. 标准错误中就包含了编译出错的信息
         long startTime = System.currentTimeMillis();
 
-        int run= CommandUtil.run(compileCmd, null, COMPILE_ERROR);
+        int run = CommandUtil.run(compileCmd, null, COMPILE_ERROR);
 
         // 此处判定一下编译是否出错. 看一下 COMPILE_ERROR 这个文件是不是空着就知道了
         String compileError = FileUtil.readFile(COMPILE_ERROR);
